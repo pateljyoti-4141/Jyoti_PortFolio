@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JYOTI PATEL | SOFTWARE ENGINEER</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-btn active">Home</a></li>
+                <li><a href="education.html" class="nav-btn">Education</a></li>
+                <li><a href="experience.html" class="nav-btn">Experience</a></li>
+                <li><a href="projects.html" class="nav-btn">Projects</a></li>
+                <li><a href="skill.html" class="nav-btn">Skills</a></li>
+                <li><a href="contact.html" class="nav-btn">Contact Me</a></li>
+                <li>
+                    <button class="theme-toggle" type="button" aria-label="Switch to light mode">
+                        <span class="theme-toggle__icon" aria-hidden="true">&#9790;</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="wrapper">
+        <section class="hero">
+            <h1>Jyoti Patel</h1>
+            <div class="summary">
+                I am a Software Engineer focused on building high-performance systems and intelligent AI solutions. I bridge the gap between complex architecture and user-centric design.
+            </div>
+        </section>
+        <section class="terminal" aria-label="Interactive portfolio terminal">
+            <div class="terminal__bar" aria-hidden="true">
+                <span class="terminal__dots"><span></span><span></span><span></span></span>
+                <span>jyoti@portfolio: ~</span>
+                <span class="terminal__live">LIVE</span>
+            </div>
+            <div class="terminal__output" id="terminal-output" role="log" aria-live="polite" aria-relevant="additions">
+                <p class="terminal__line">Portfolio terminal ready. Type <code>help</code> or <code>ask &lt;question&gt;</code> to begin.</p>
+            </div>
+            <form class="terminal__form" id="terminal-form" autocomplete="off">
+                <label class="terminal__prompt" for="terminal-input">$</label>
+                <input id="terminal-input" name="command" type="text" placeholder="help or ask a portfolio question" aria-label="Terminal command" spellcheck="false" autocomplete="off">
+                <button class="terminal__submit" type="submit">Run</button>
+            </form>
+        </section>
+        <footer class="site-footer home-footer">
+            <div>&copy; 2026 JYOTI PATEL</div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
