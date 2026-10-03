@@ -1,10 +1,63 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>JYOTI PATEL | SOFTWARE ENGINEER</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .hero-layout {
+            position: relative;
+        }
+        .profile-card-right {
+            float: right;
+            width: 260px;
+            margin: 0 0 25px 35px;
+            text-align: center;
+        }
+        .profile-photo {
+            width: 100%;
+            height: 320px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: block;
+            margin-bottom: 15px;
+        }
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            margin-bottom: 25px;
+            color: var(--fg);
+        }
+        .hero-content .summary {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--muted);
+            line-height: 1.8;
+            text-align: justify;
+            text-justify: inter-word;
+            margin-bottom: 30px;
+        }
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        @media (max-width: 768px) {
+            .profile-card-right {
+                float: none;
+                width: 100%;
+                max-width: 280px;
+                margin: 0 auto 30px auto;
+            }
+            .profile-photo {
+                height: 280px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -18,36 +71,80 @@
                 <li><a href="contact.html" class="nav-btn">Contact Me</a></li>
                 <li>
                     <button class="theme-toggle" type="button" aria-label="Switch to light mode">
-                        <span class="theme-toggle__icon" aria-hidden="true">&#9790;</span>
+                        <span class="theme-toggle__icon" aria-hidden="true">☾</span>
                     </button>
                 </li>
             </ul>
         </nav>
     </header>
+
     <div class="wrapper">
-        <section class="hero">
-            <h1>Jyoti Patel</h1>
-            <div class="summary">
-                I am a Software Engineer focused on building high-performance systems and intelligent AI solutions. I bridge the gap between complex architecture and user-centric design.
+            
+        <!-- Full Width IIT (ISM) Image Banner -->
+        <div class="full-width-banner">
+            <img src="assets/skills/IITISM.png" alt="IIT (ISM) Dhanbad Campus & Architecture">
+        </div>
+
+        <section class="hero hero-layout clearfix">
+            <div class="profile-card-right">
+                <img src="assets/skills/photo.jpg" alt="Jyoti Patel" class="profile-photo">
+                <a class="cta-btn" href="assets/Jyoti_Patel_Resume.pdf" download style="display: block; width: 100%; padding: 12px 20px; font-size: 0.8rem; text-align: center;">Resume</a>
+            </div>
+
+            <div class="hero-content">
+                <h1>Hi <br> I'm JYOTI PATEL</h1>
+                <div class="summary">
+                    I am a <strong>Software Engineer at Siemens Digital Industries Software</strong>, specializing in Model-Based Definition (MBD) and high-performance C++ systems. By integrating my deep mechanical engineering background with modern software architecture, I architect intelligent tools that optimize industrial workflows at the <strong>Siemens Design Center</strong>. I am a proactive learner dedicated to bridging the divide between physical engineering and the digital future through constant innovation, technical rigor, and a passion for solving complex industrial challenges.
+                </div>
             </div>
         </section>
-        <section class="terminal" aria-label="Interactive portfolio terminal">
+
+        <section class="terminal" aria-label="Interactive portfolio chatbot terminal">
             <div class="terminal__bar" aria-hidden="true">
                 <span class="terminal__dots"><span></span><span></span><span></span></span>
-                <span>jyoti@portfolio: ~</span>
-                <span class="terminal__live">LIVE</span>
+                <span class="terminal__title">jyoti@portfolio-ai: ~</span>
+                <span class="terminal__live">ACTIVE</span>
             </div>
             <div class="terminal__output" id="terminal-output" role="log" aria-live="polite" aria-relevant="additions">
-                <p class="terminal__line">Portfolio terminal ready. Type <code>help</code> or <code>ask &lt;question&gt;</code> to begin.</p>
+                <p class="terminal__line">Ask about Jyoti. Use your own compatible LLM or load the local model. Type <code style="color: var(--accent-color);">help</code> for suggestions.</p>
+            </div>
+            <div class="terminal__toolbar">
+                <button class="terminal__tool-button" id="terminal-llm-settings" type="button">Use your LLM</button>
+                <button class="terminal__tool-button terminal__model-load" id="terminal-ai-toggle" type="button">Load local AI</button>
+                <button class="terminal__tool-button" id="terminal-clear" type="button">Clear chat</button>
             </div>
             <form class="terminal__form" id="terminal-form" autocomplete="off">
                 <label class="terminal__prompt" for="terminal-input">$</label>
-                <input id="terminal-input" name="command" type="text" placeholder="help or ask a portfolio question" aria-label="Terminal command" spellcheck="false" autocomplete="off">
-                <button class="terminal__submit" type="submit">Run</button>
+                <input id="terminal-input" name="command" type="text" placeholder="Ask about Jyoti, or type help..." aria-label="Terminal command or AI prompt" spellcheck="false" autocomplete="off">
+                <button class="terminal__submit" type="submit">Send</button>
             </form>
         </section>
+        <dialog class="llm-dialog" id="llm-settings" aria-labelledby="llm-settings-title">
+            <form class="llm-dialog__form" id="llm-settings-form">
+                <h2 id="llm-settings-title">Connect your LLM</h2>
+                <p>Use an OpenAI-compatible chat completions endpoint. Your key stays in this tab's memory and is sent directly to the endpoint you enter. The endpoint must allow browser requests (CORS).</p>
+                <div class="llm-dialog__field">
+                    <label for="llm-endpoint">Chat completions URL</label>
+                    <input id="llm-endpoint" name="endpoint" type="url" value="https://api.openai.com/v1/chat/completions" required autocomplete="url">
+                </div>
+                <div class="llm-dialog__field">
+                    <label for="llm-model">Model name</label>
+                    <input id="llm-model" name="model" type="text" placeholder="Model ID" required autocomplete="off">
+                </div>
+                <div class="llm-dialog__field">
+                    <label for="llm-api-key">API key <span>(optional for local endpoints)</span></label>
+                    <input id="llm-api-key" name="apiKey" type="password" autocomplete="off" spellcheck="false">
+                </div>
+                <p class="llm-dialog__status" id="llm-settings-status" role="status"></p>
+                <div class="llm-dialog__actions">
+                    <button class="llm-dialog__button" id="llm-clear" type="button">Forget connection</button>
+                    <button class="llm-dialog__button" id="llm-cancel" type="button">Cancel</button>
+                    <button class="llm-dialog__button llm-dialog__button--primary" type="submit">Connect</button>
+                </div>
+            </form>
+        </dialog>
         <footer class="site-footer home-footer">
-            <div>&copy; 2026 JYOTI PATEL</div>
+            <div>© 2026 JYOTI PATEL</div>
         </footer>
     </div>
     <script src="script.js"></script>
